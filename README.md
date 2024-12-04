@@ -101,7 +101,7 @@
   * **Candidate Features** 
     * Details: [./features/README.md](https://github.com/440g/Machine5/blob/main/features/README.md)
 
-  * **Closed-Wold Multi, Open-World Binary Classification**
+  * **Closed-World Multi, Open-World Binary Classification**
     * Use a baseline model to select the best model that performs well on the given data.
     * Only features with high importance and correlation coefficients are selected for training to avoid overfitting and speed up training.
     * We use data preprocessing and hyperparameter tuning to improve the accuracy of the selected model.
