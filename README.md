@@ -32,9 +32,10 @@
 📦Machine5
  ┣ 📂Closed
  ┃ ┣ 📜Closed_RF.ipynb
- ┃ ┣ 📜Closed_RF_old.ipynb
+ ┃ ┣ 📜Closed_RF_old .ipynb
  ┃ ┣ 📜Closed_RF_selected10.ipynb
  ┃ ┣ 📜Closed_SVM.ipynb
+ ┃ ┣ 📜Closed_SVM_old.ipynb
  ┃ ┗ 📜baseline.ipynb
  ┣ 📂Open_Binary
  ┃ ┣ 📂baseline
@@ -45,6 +46,7 @@
  ┃ ┗ 📜Open_Binary_SVM.ipynb
  ┣ 📂Open_Multi
  ┃ ┣ 📜Open2_Multi_RF.ipynb
+ ┃ ┣ 📜Open2_Multi_SVM.ipynb
  ┃ ┣ 📜Open_Multi_RF.ipynb
  ┃ ┗ 📜Open_Multi_SVM.ipynb
  ┣ 📂datasets
@@ -74,6 +76,9 @@
  ┃ ┣ 📜README.md
  ┃ ┗ 📜feature_generator.ipynb
  ┣ 📜README.md
+ ┣ 📜Scenario1_SVM.png
+ ┣ 📜Scenario2_RF.png
+ ┣ 📜Scenario2_RF_2.png
  ┗ 📜how_to_run.ipynb
   ```
 </div>
@@ -174,22 +179,24 @@
 
 
 ## How to Run 
+  * **Highly recommend to skip 2. Feature generation and 3. Scenario 1: if you want to reproduce only the final prediction experiment.**
+    * In this case, you only need to download the `./datasets` folder and the `./Open_Multi/{Open2_Multi_RF | Open2_Multi_SVM}.ipynb` file (which requires a dataset load path conversion) and run the file.
 ### 1. Open and run `how_to_run.ipynb` to clone this repository
   * <a href="https://colab.research.google.com/github/440g/Machine5/blob/main/how_to_run.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ### 2. Feature generation
-  * Run `feature_generator.ipynb`(/content/drive/MyDrive/Machine5/featuers) and get `{mon_features, unmon_features, unmon3000_features}.ipynb`(/content/drive/MyDrive/Machine5/datasets)
+  * Run `feature_generator.ipynb`(/content/drive/MyDrive/Machine5/featuers) and get `{mon_features | unmon_features | unmon3000_features}.ipynb`(/content/drive/MyDrive/Machine5/datasets)
 
 ### 3. Scenario 1
-  * Closed: Run `{baseline, Closed_RF, Closed_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Closed) 
-  * Open_Binary: Run `{Open_Binary_RF, Open_Binary_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Open_Binary)
-  * Open_Multi: Run `{Open_Multi_RF, Open_Multi_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Open_Multi)
+  * Closed: Run `{baseline | Closed_RF | Closed_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Closed) 
+  * Open_Binary: Run `{Open_Binary_RF | Open_Binary_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Open_Binary)
+  * Open_Multi: Run `{Open_Multi_RF | Open_Multi_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Open_Multi)
 
 ### 4. Scenario 2
   * **Open_Binary model should be executed before Open_Multi model**
-  * Closed: Run `{baseline, Closed_RF, Closed_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Closed)
+  * Closed: Run `{baseline | Closed_RF | Closed_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Closed)
   * Open_Binary: Run `Open2_Binary_RF_selected12.ipynb`(/content/drive/MyDrive/Machine5/Open_Binary) and get `binary_labels.csv`(/content/drive/MyDrive/Machine5/datasets)
-  * Open_Multi: Run `{Open2_Multi_RF}.ipynb`(/content/drive/MyDrive/Machine5/Open_Multi) and get `final_labels.csv`(/content/drive/MyDrive/Machine5/datasets)
+  * Open_Multi: Run `{Open2_Multi_RF | Open2_Multi_SVM}.ipynb`(/content/drive/MyDrive/Machine5/Open_Multi) and get `final_labels.csv`(/content/drive/MyDrive/Machine5/datasets)
 
 
 
@@ -208,9 +215,9 @@
 |All|[Open_Binary](https://github.com/440g/Machine5/tree/main/Open_Binary)|[Closed](https://github.com/440g/Machine5/tree/main/Closed)|[Open_Multi](https://github.com/440g/Machine5/tree/main/Open_Multi)| -|
 |:---:|:---:|:---:|:---:|:---:|
 | [features](https://github.com/440g/Machine5/tree/main/features)| [Open_Binary/baseline](https://github.com/440g/Machine5/tree/main/Open_Binary/baseline)| Closed_RF_old.ipynb| Open_Multi_RF.ipynb|  |
-| Closed/{baseline, Closed_RF, Closed_RF_selected10}.ipynb| Open_Binary_RF.ipynb| Closed_SVM.ipynb| Open_Multi_SVM.ipynb|  |
-| Open_Binary/{Open2_Binary_RF_selected6, Open2_Binary_RF_selected12}.ipynb| Open_Binary_SVM.ipynb|  |  |  |
-| Open2_Multi_RF.ipynb| Open_Binary_KNN.ipynb|  |  |  |
+| Closed/{baseline, Closed_RF, Closed_RF_selected10}.ipynb| Open_Binary_RF.ipynb| Closed_SVM_old.ipynb| Open_Multi_SVM.ipynb|  |
+| Open_Binary/{Open2_Binary_RF_selected6, Open2_Binary_RF_selected12}.ipynb| Open_Binary_SVM.ipynb| Closed_RF.ipynb | Open2_Multi_SVM.ipynb |  |
+| Open2_Multi_RF.ipynb| Open_Binary_KNN.ipynb| Closed_SVM.ipynb |  |  |
 
 </div>
 </details>
