@@ -104,22 +104,54 @@
   * **Closed-Wold Multi, Open-World Binary Classification**
     * Use a baseline model to select the best model that performs well on the given data.
     * Only features with high importance and correlation coefficients are selected for training to avoid overfitting and speed up training.
-    * We use data preprocessing and hyperparameter tuning to improve the accuracy of the selected model.   
+    * We use data preprocessing and hyperparameter tuning to improve the accuracy of the selected model.
+   
+    * **Open-World Binary Scenario**
+      * Combine monitored and unmonitored data into a single dataset.
+      * Train the entire dataset using binary classification (-1 vs 1), where the label -1 represents unmonitored data and 1 represents monitored data.
+      * Additional Step: Extract labels based on the binary classification prediction results to implement a multi-class model, and save these labels in a CSV file **(used in Open-World Multi Scenario 2)**.    
 
   * The open-world multi classification followed two scenarios.
 
-  * **Scenario 1**  
+  * **Open-World Multi Scenario 1**  
     * The model is selected by considering the baseline of multi-classification in the closed world and the baseline of binary classification in the open world.
     * Combine data for monitored and unmonitored instances.
     * Using the selected model, predict the label{-1, 0, 1, ..., 94} for the combined data.
 
-  * **Scenario 2**  
+  * **Open-World Multi Scenario 2**  
     * Preprocess the data without classification, taking into account the different feature importance and 2. correlation coefficients between monitored and unmonitored data.
     * Train a closed multi-classification model and an open binary classification model for each data separately.
     * Perform prediction of open binary classification model > Extract the prediction result > Perform multi-classification based on this prediction result.  
 
 ### Results
-  * **Scenario 1**  
+
+  * **Open-World Binary Scenario**
+    * The SVM achieved a baseline accuracy of 80.00%, which improved to 83.29% after hyperparameter optimization.
+    * <details>
+      <summary>details(SVM)</summary>
+     
+      - The optimized model showed excellent balance with a PR curve of 90.99% and an ROC curve of 80.32%, minimizing false negatives with a recall of 89.81%.
+      <img width="947" alt="image" src="https://github.com/user-attachments/assets/9aea6302-6135-4f81-a6b9-55d49d84c1c4">
+    </details>
+    
+    * Random Forest demonstrated the highest performance and improved generalization through hyperparameter tuning.
+    * <details>
+      <summary>details(RF)</summary>
+
+      - The baseline accuracy of Random Forest was 84.72%, which was adjusted to 82.12% after tuning.
+      - The tuning focused on reducing overfitting and addressing data imbalance by limiting `max_depth` and `max_leaf_nodes` and applying `class_weight='balanced'`.
+      - Although accuracy and ROC-AUC decreased to 82.12% and 81.74%, respectively, the model's generalization performance improved.
+      - PR-AUC remained high at 91.91%, and precision was maintained at 89.53%, effectively minimizing false positives and achieving balanced performance.
+
+      <img width="919" alt="rf" src="https://github.com/user-attachments/assets/313a6a5a-f9fe-4dce-b04d-6741ec4c5deb">
+    </details>
+
+    * Future Improvement Direction:
+Optimize class weights, tune hyperparameters, and address data imbalance using resampling techniques.
+
+
+
+  * **Open-World Multi Scenario 1**  
     * Multi-classification and binary classification do not consider the importance of the features used, resulting in relatively low accuracy.
     * <details>
       <summary>details(SVM)</summary>
@@ -143,7 +175,7 @@
       </div>
       </details>  
     
-  * **Scenario 2** 
+  * **Open-World Multi Scenario 2**  
     * The criteria not considered in Scenario 1 were applied, resulting in a relatively high accuracy. 
     * <details>
       <summary>details(RF)</summary>
